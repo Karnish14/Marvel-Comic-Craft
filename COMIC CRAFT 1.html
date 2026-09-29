@@ -1,0 +1,3935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Comic Story - A professional comic book universe featuring Marvel Comics, Iron Man, Captain America, Thor, Hulk, Black Widow, The Avengers, Infinity War, Endgame and Spider-Man.">
+<meta name="keywords" content="comic books, Marvel, Iron Man, Captain America, Thor, Hulk, Black Widow, Avengers, Spider-Man">
+<meta name="author" content="Comic Story">
+<meta name="theme-color" content="#e62429">
+<title>Comic Story | Marvel Comic Universe</title>
+
+<style>
+/* ============================================================
+   COMIC STORY
+   PROFESSIONAL COMIC BOOK WEBSITE
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   ROOT VARIABLES
+   ------------------------------------------------------------ */
+
+:root {
+    --red: #e62429;
+    --dark-red: #a90000;
+    --bright-red: #ff3038;
+    --blue: #0878d1;
+    --dark-blue: #061b35;
+    --yellow: #ffd500;
+    --gold: #ffb000;
+    --black: #050505;
+    --soft-black: #101010;
+    --dark-gray: #171717;
+    --gray: #242424;
+    --medium-gray: #444;
+    --light-gray: #d9d9d9;
+    --white: #ffffff;
+    --off-white: #f4f4f4;
+    --muted: #a9a9a9;
+    --green: #3aa655;
+    --purple: #7b2cbf;
+    --shadow: rgba(0,0,0,.45);
+    --shadow-heavy: rgba(0,0,0,.75);
+    --radius-small: 8px;
+    --radius-medium: 16px;
+    --radius-large: 26px;
+    --max-width: 1400px;
+    --transition: .3s ease;
+}
+
+/* ------------------------------------------------------------
+   GLOBAL RESET
+   ------------------------------------------------------------ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(230,36,41,.12), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(8,120,209,.12), transparent 25%),
+        var(--black);
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body.light-mode {
+    background: #eeeeee;
+    color: #111111;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* ------------------------------------------------------------
+   UTILITY CLASSES
+   ------------------------------------------------------------ */
+
+.container {
+    width: min(92%, var(--max-width));
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.red {
+    color: var(--red);
+}
+
+.yellow {
+    color: var(--yellow);
+}
+
+.blue {
+    color: var(--blue);
+}
+
+/* ------------------------------------------------------------
+   PRELOADER
+   ------------------------------------------------------------ */
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle, #260000, #050505 65%);
+    transition: opacity .6s ease, visibility .6s ease;
+}
+
+.preloader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-box {
+    text-align: center;
+}
+
+.loader-logo {
+    width: 180px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background: var(--red);
+    border: 5px solid white;
+    color: white;
+    font-size: 32px;
+    font-weight: 1000;
+    letter-spacing: -2px;
+    box-shadow: 0 0 35px rgba(230,36,41,.65);
+    animation: logoPulse 1.2s infinite alternate;
+}
+
+.loader-text {
+    margin-top: 20px;
+    color: white;
+    letter-spacing: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.loader-line {
+    width: 220px;
+    height: 4px;
+    margin: 18px auto;
+    background: #333;
+    overflow: hidden;
+}
+
+.loader-line span {
+    display: block;
+    height: 100%;
+    width: 40%;
+    background: var(--red);
+    animation: loading 1.2s infinite;
+}
+
+@keyframes loading {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(350%); }
+}
+
+@keyframes logoPulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.04); }
+}
+
+/* ------------------------------------------------------------
+   HEADER
+   ------------------------------------------------------------ */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5000;
+    background: rgba(4,4,4,.94);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    backdrop-filter: blur(15px);
+}
+
+.header-inner {
+    width: min(94%, 1500px);
+    min-height: 76px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.brand-mark {
+    width: 105px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--red);
+    color: white;
+    font-size: 24px;
+    font-weight: 1000;
+    letter-spacing: -1.5px;
+    border: 3px solid white;
+    box-shadow: 5px 5px 0 #000;
+}
+
+.brand-title {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-menu a {
+    position: relative;
+    padding: 27px 14px;
+    color: #ddd;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.nav-menu a::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 18px;
+    height: 2px;
+    background: var(--red);
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.nav-menu a:hover {
+    color: white;
+}
+
+.nav-menu a:hover::after {
+    transform: scaleX(1);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-btn {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    background: #151515;
+    color: white;
+    transition: var(--transition);
+}
+
+.icon-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+    transform: translateY(-2px);
+}
+
+.mobile-menu {
+    display: none;
+}
+
+/* ------------------------------------------------------------
+   HERO
+   ------------------------------------------------------------ */
+
+.hero {
+    position: relative;
+    min-height: 820px;
+    padding-top: 76px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background:
+        linear-gradient(90deg,
+            rgba(0,0,0,.98) 0%,
+            rgba(0,0,0,.83) 35%,
+            rgba(0,0,0,.38) 70%,
+            rgba(0,0,0,.82) 100%),
+        radial-gradient(circle at 75% 40%, #3b0000, #050505 60%);
+}
+
+.hero::before {
+    content: "COMIC";
+    position: absolute;
+    top: 8%;
+    right: -80px;
+    font-size: 260px;
+    line-height: .7;
+    font-weight: 1000;
+    color: rgba(255,255,255,.025);
+    transform: rotate(-8deg);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(135deg, rgba(255,255,255,.025) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(255,255,255,.018) 25%, transparent 25%);
+    background-size: 22px 22px;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    width: min(94%, 1400px);
+    margin: auto;
+    padding: 80px 0;
+}
+
+.hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    color: var(--yellow);
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hero-kicker::before {
+    content: "";
+    width: 35px;
+    height: 3px;
+    background: var(--red);
+}
+
+.hero h1 {
+    max-width: 850px;
+    font-size: clamp(55px, 9vw, 125px);
+    line-height: .82;
+    font-weight: 1000;
+    letter-spacing: -6px;
+    text-transform: uppercase;
+    text-shadow:
+        5px 5px 0 var(--red),
+        10px 10px 0 rgba(0,0,0,.65);
+}
+
+.hero h1 span {
+    color: var(--red);
+}
+
+.hero-description {
+    max-width: 650px;
+    margin: 35px 0;
+    color: #c7c7c7;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.btn {
+    min-height: 52px;
+    padding: 0 25px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 1000;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--red);
+    color: white;
+    box-shadow: 5px 5px 0 #650000;
+}
+
+.btn-primary:hover {
+    background: #ff3338;
+    transform: translate(-2px,-2px);
+    box-shadow: 8px 8px 0 #650000;
+}
+
+.btn-outline {
+    border-color: white;
+    background: transparent;
+    color: white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: black;
+}
+
+.hero-badge {
+    position: absolute;
+    right: 5%;
+    bottom: 70px;
+    z-index: 4;
+    width: 170px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid white;
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 10px 10px 0 rgba(0,0,0,.6);
+    transform: rotate(8deg);
+}
+
+.hero-badge strong {
+    font-size: 45px;
+    line-height: 1;
+}
+
+.hero-badge span {
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+/* ------------------------------------------------------------
+   SECTION
+   ------------------------------------------------------------ */
+
+.section {
+    position: relative;
+    padding: 110px 0;
+}
+
+.section-dark {
+    background: #080808;
+}
+
+.section-red {
+    background:
+        linear-gradient(135deg, #8e0000, #e62429 50%, #700000);
+}
+
+.section-title {
+    margin-bottom: 55px;
+}
+
+.section-eyebrow {
+    margin-bottom: 10px;
+    color: var(--red);
+    font-size: 11px;
+    font-weight: 1000;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.section-red .section-eyebrow {
+    color: var(--yellow);
+}
+
+.section-title h2 {
+    font-size: clamp(35px, 5vw, 68px);
+    line-height: .95;
+    font-weight: 1000;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+}
+
+.section-title p {
+    max-width: 650px;
+    margin-top: 18px;
+    color: #999;
+}
+
+.section-red .section-title p {
+    color: rgba(255,255,255,.78);
+}
+
+/* ------------------------------------------------------------
+   FILTER BAR
+   ------------------------------------------------------------ */
+
+.filter-wrapper {
+    margin-bottom: 45px;
+}
+
+.filter-bar {
+    padding: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: #111;
+    border: 1px solid #292929;
+    border-radius: 12px;
+}
+
+.filter-btn {
+    padding: 11px 18px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #181818;
+    color: #aaa;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--red);
+    border-color: var(--red);
+    color: white;
+}
+
+/* ------------------------------------------------------------
+   SEARCH
+   ------------------------------------------------------------ */
+
+.search-box {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.search-box input {
+    width: 100%;
+    height: 56px;
+    padding: 0 55px 0 20px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    outline: none;
+    background: #121212;
+    color: white;
+}
+
+.search-box input:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(230,36,41,.12);
+}
+
+.search-box span {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+/* ------------------------------------------------------------
+   BOOK GRID
+   ------------------------------------------------------------ */
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.book-card {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+    border: 1px solid #292929;
+    border-radius: 12px;
+    transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-12px);
+    border-color: var(--red);
+    box-shadow: 0 25px 50px rgba(0,0,0,.5);
+}
+
+.book-cover {
+    position: relative;
+    height: 390px;
+    overflow: hidden;
+    background:
+        linear-gradient(135deg, #252525, #090909);
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.book-card:hover .book-cover img {
+    transform: scale(1.07);
+}
+
+.book-cover-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.18), transparent 25%),
+        linear-gradient(145deg, var(--card-color), #080808 70%);
+}
+
+.placeholder-symbol {
+    font-size: 85px;
+    filter: drop-shadow(0 8px 10px rgba(0,0,0,.6));
+}
+
+.cover-label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 7px 10px;
+    background: var(--red);
+    color: white;
+    font-size: 9px;
+    font-weight: 1000;
+    letter-spacing: 1px;
+}
+
+.cover-number {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: white;
+    color: black;
+    font-size: 11px;
+    font-weight: 1000;
+}
+
+.book-info {
+    padding: 20px;
+}
+
+.book-info h3 {
+    min-height: 48px;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 1000;
+    text-transform: uppercase;
+}
+
+.book-meta {
+    margin: 9px 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #777;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.stars {
+    color: var(--yellow);
+    letter-spacing: 2px;
+}
+
+.book-info p {
+    min-height: 72px;
+    color: #888;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.book-actions {
+    margin-top: 18px;
+    display: flex;
+    gap: 8px;
+}
+
+.small-btn {
+    flex: 1;
+    height: 38px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #181818;
+    color: white;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.small-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+}
+
+/* ------------------------------------------------------------
+   FEATURED POSTERS
+   ------------------------------------------------------------ */
+
+.poster-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.poster {
+    position: relative;
+    min-height: 620px;
+    overflow: hidden;
+    border: 2px solid #303030;
+    border-radius: 16px;
+    background: #111;
+}
+
+.poster-image {
+    position: absolute;
+    inset: 0;
+}
+
+.poster-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.poster-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(0deg,
+            rgba(0,0,0,.95) 0%,
+            rgba(0,0,0,.65) 30%,
+            rgba(0,0,0,.05) 75%);
+}
+
+.poster-content {
+    position: absolute;
+    left: 35px;
+    right: 35px;
+    bottom: 35px;
+}
+
+.poster-tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    background: var(--red);
+    color: white;
+    font-size: 9px;
+    font-weight: 1000;
+    letter-spacing: 2px;
+}
+
+.poster-content h3 {
+    font-size: clamp(30px, 4vw, 60px);
+    line-height: .9;
+    font-weight: 1000;
+    text-transform: uppercase;
+    text-shadow: 4px 4px 0 black;
+}
+
+.poster-content p {
+    max-width: 550px;
+    margin-top: 15px;
+    color: #ddd;
+}
+
+/* ------------------------------------------------------------
+   CHARACTERS
+   ------------------------------------------------------------ */
+
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+}
+
+.character {
+    position: relative;
+    min-height: 260px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    border: 1px solid #2b2b2b;
+    border-radius: 12px;
+    background:
+        radial-gradient(circle at 50% 15%, rgba(255,255,255,.1), transparent 35%),
+        #111;
+    transition: var(--transition);
+}
+
+.character:hover {
+    transform: translateY(-8px);
+    border-color: var(--red);
+}
+
+.character-symbol {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 80px;
+    opacity: .85;
+}
+
+.character-name {
+    position: relative;
+    z-index: 2;
+    font-size: 20px;
+    font-weight: 1000;
+    text-transform: uppercase;
+}
+
+.character-role {
+    position: relative;
+    z-index: 2;
+    color: #888;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------
+   TIMELINE
+   ------------------------------------------------------------ */
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(var(--red), var(--blue));
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 25px 50px;
+}
+
+.timeline-item:nth-child(odd) {
+    margin-left: 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    margin-left: 50%;
+}
+
+.timeline-dot {
+    position: absolute;
+    top: 32px;
+    right: -9px;
+    width: 18px;
+    height: 18px;
+    border: 4px solid #090909;
+    border-radius: 50%;
+    background: var(--red);
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -9px;
+    right: auto;
+    background: var(--blue);
+}
+
+.timeline-card {
+    padding: 25px;
+    border: 1px solid #303030;
+    border-radius: 10px;
+    background: #111;
+}
+
+.timeline-year {
+    color: var(--yellow);
+    font-size: 11px;
+    font-weight: 1000;
+    letter-spacing: 2px;
+}
+
+.timeline-card h3 {
+    margin: 7px 0;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.timeline-card p {
+    color: #888;
+    font-size: 12px;
+}
+
+/* ------------------------------------------------------------
+   COMIC PANELS
+   ------------------------------------------------------------ */
+
+.comic-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.comic-panel {
+    position: relative;
+    min-height: 250px;
+    padding: 30px;
+    overflow: hidden;
+    border: 5px solid white;
+    background: var(--red);
+    box-shadow: 8px 8px 0 black;
+    transform: rotate(-1deg);
+}
+
+.comic-panel:nth-child(2) {
+    transform: rotate(1deg);
+    background: var(--blue);
+}
+
+.comic-panel:nth-child(3) {
+    transform: rotate(-.5deg);
+    background: var(--yellow);
+    color: black;
+}
+
+.comic-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(0,0,0,.2) 1px, transparent 1px);
+    background-size: 7px 7px;
+    opacity: .4;
+}
+
+.comic-panel > * {
+    position: relative;
+    z-index: 2;
+}
+
+.comic-panel h3 {
+    font-size: 45px;
+    line-height: .9;
+    font-weight: 1000;
+    text-transform: uppercase;
+}
+
+.comic-panel p {
+    margin-top: 20px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* ------------------------------------------------------------
+   STATISTICS
+   ------------------------------------------------------------ */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat {
+    padding: 35px 20px;
+    text-align: center;
+    border: 1px solid #333;
+    border-radius: 12px;
+    background: #111;
+}
+
+.stat-number {
+    color: var(--red);
+    font-size: 48px;
+    line-height: 1;
+    font-weight: 1000;
+}
+
+.stat-label {
+    margin-top: 10px;
+    color: #999;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------
+   NEWSLETTER
+   ------------------------------------------------------------ */
+
+.newsletter {
+    position: relative;
+    padding: 70px;
+    overflow: hidden;
+    border-radius: 20px;
+    background:
+        linear-gradient(120deg, #a40000, #e62429 50%, #8b0000);
+}
+
+.newsletter::before {
+    content: "!";
+    position: absolute;
+    right: 5%;
+    top: -40px;
+    color: rgba(0,0,0,.1);
+    font-size: 300px;
+    line-height: 1;
+    font-weight: 1000;
+}
+
+.newsletter-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.newsletter h2 {
+    font-size: clamp(35px, 5vw, 65px);
+    line-height: .9;
+    font-weight: 1000;
+    text-transform: uppercase;
+}
+
+.newsletter p {
+    margin: 20px 0 25px;
+    color: rgba(255,255,255,.8);
+}
+
+.newsletter-form {
+    display: flex;
+    max-width: 650px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    min-width: 0;
+    height: 55px;
+    padding: 0 18px;
+    border: none;
+    outline: none;
+}
+
+.newsletter-form button {
+    width: 160px;
+    border: none;
+    background: #080808;
+    color: white;
+    font-weight: 1000;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------
+   FOOTER
+   ------------------------------------------------------------ */
+
+.footer {
+    padding: 80px 0 30px;
+    border-top: 1px solid #292929;
+    background: #050505;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 50px;
+}
+
+.footer-brand p {
+    max-width: 400px;
+    margin-top: 20px;
+    color: #777;
+    font-size: 13px;
+}
+
+.footer h4 {
+    margin-bottom: 18px;
+    font-size: 12px;
+    font-weight: 1000;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.footer-links {
+    display: grid;
+    gap: 9px;
+}
+
+.footer-links a {
+    color: #777;
+    font-size: 12px;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--red);
+    transform: translateX(4px);
+}
+
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    border-top: 1px solid #222;
+    color: #555;
+    font-size: 10px;
+}
+
+/* ------------------------------------------------------------
+   MODAL
+   ------------------------------------------------------------ */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    background: rgba(0,0,0,.85);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-box {
+    position: relative;
+    width: min(800px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px;
+    border: 1px solid #444;
+    border-radius: 16px;
+    background: #111;
+    transform: translateY(30px);
+    transition: var(--transition);
+}
+
+.modal.active .modal-box {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #252525;
+    color: white;
+    font-size: 20px;
+}
+
+.modal-close:hover {
+    background: var(--red);
+}
+
+.modal-title {
+    margin-bottom: 15px;
+    font-size: 40px;
+    line-height: 1;
+    font-weight: 1000;
+    text-transform: uppercase;
+}
+
+.modal-meta {
+    color: var(--yellow);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.modal-description {
+    margin-top: 25px;
+    color: #aaa;
+    line-height: 1.9;
+}
+
+/* ------------------------------------------------------------
+   TOAST
+   ------------------------------------------------------------ */
+
+.toast {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 10000;
+    max-width: 350px;
+    padding: 16px 20px;
+    border-left: 4px solid var(--red);
+    background: #151515;
+    color: white;
+    box-shadow: 0 15px 40px rgba(0,0,0,.5);
+    transform: translateX(130%);
+    transition: .4s ease;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+/* ------------------------------------------------------------
+   SCROLL TOP
+   ------------------------------------------------------------ */
+
+.scroll-top {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 4000;
+    width: 45px;
+    height: 45px;
+    border: 1px solid #444;
+    border-radius: 50%;
+    background: var(--red);
+    color: white;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------ */
+
+@media (max-width: 1150px) {
+    .book-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .character-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .nav-menu a {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
+
+@media (max-width: 900px) {
+    .nav-menu {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        padding: 15px;
+        background: #090909;
+        border-bottom: 1px solid #333;
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-menu a {
+        width: 100%;
+        padding: 14px;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .character-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .poster-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .hero {
+        min-height: 720px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    .hero-badge {
+        width: 110px;
+        height: 110px;
+        right: 20px;
+        bottom: 25px;
+    }
+
+    .hero-badge strong {
+        font-size: 30px;
+    }
+
+    .book-grid,
+    .character-grid,
+    .stats,
+    .comic-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .book-cover {
+        height: 450px;
+    }
+
+    .timeline::before {
+        left: 10px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 40px;
+        padding-right: 0;
+        text-align: left;
+    }
+
+    .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 1px;
+        right: auto;
+    }
+
+    .newsletter {
+        padding: 40px 25px;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-form button {
+        width: 100%;
+        height: 50px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}
+
+/* ------------------------------------------------------------
+   PRINT
+   ------------------------------------------------------------ */
+
+@media print {
+    .site-header,
+    .preloader,
+    .scroll-top,
+    .modal,
+    .toast {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+}
+
+/* ------------------------------------------------------------
+   EXTRA PROFESSIONAL VISUAL EFFECTS
+   ------------------------------------------------------------ */
+
+.comic-shadow {
+    box-shadow:
+        5px 5px 0 #000,
+        10px 10px 0 rgba(230,36,41,.3);
+}
+
+.glow-red {
+    box-shadow: 0 0 35px rgba(230,36,41,.25);
+}
+
+.glow-blue {
+    box-shadow: 0 0 35px rgba(8,120,209,.25);
+}
+
+.hover-red {
+    transition: var(--transition);
+}
+
+.hover-red:hover {
+    color: var(--red);
+}
+
+.divider {
+    height: 2px;
+    margin: 40px 0;
+    background: linear-gradient(90deg, var(--red), transparent);
+}
+
+.marvel-pattern {
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.08) 1px, transparent 1px);
+    background-size: 12px 12px;
+}
+
+/* ============================================================
+   END CSS
+   ============================================================ */
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     PRELOADER
+     ============================================================ -->
+
+<div class="preloader" id="preloader">
+    <div class="loader-box">
+        <div class="loader-logo">MARVEL</div>
+        <div class="loader-text">LOADING COMIC STORY</div>
+        <div class="loader-line">
+            <span></span>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+
+<header class="site-header">
+    <div class="header-inner">
+
+        <a href="#home" class="brand">
+            <div class="brand-mark">MARVEL</div>
+            <div class="brand-title">COMIC STORY</div>
+        </a>
+
+        <nav class="nav-menu" id="navMenu">
+            <a href="#home">Home</a>
+            <a href="#library">Library</a>
+            <a href="#posters">Posters</a>
+            <a href="#characters">Characters</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-btn" id="themeButton" title="Toggle theme">☼</button>
+            <button class="icon-btn mobile-menu" id="menuButton" title="Menu">☰</button>
+        </div>
+
+    </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+
+<main>
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="hero-kicker">
+            The Ultimate Comic Collection
+        </div>
+
+        <h1>
+            COMIC<br>
+            <span>STORY</span>
+        </h1>
+
+        <p class="hero-description">
+            Enter a universe of legendary heroes, extraordinary stories,
+            unforgettable battles and iconic comic book adventures.
+            Explore a curated collection featuring Marvel Comics,
+            Iron Man, Captain America, Thor, Hulk, Black Widow,
+            The Avengers and Spider-Man.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#library" class="btn btn-primary">
+                Explore Library
+            </a>
+
+            <a href="#posters" class="btn btn-outline">
+                View Posters
+            </a>
+        </div>
+
+    </div>
+
+    <div class="hero-badge">
+        <strong>10+</strong>
+        <span>ICONIC STORIES</span>
+    </div>
+
+</section>
+
+<!-- ============================================================
+     STATS
+     ============================================================ -->
+
+<section class="section section-dark">
+
+    <div class="container">
+
+        <div class="stats">
+
+            <div class="stat">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Featured Books</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">08</div>
+                <div class="stat-label">Super Heroes</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">02</div>
+                <div class="stat-label">Featured Posters</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Comic Adventures</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     LIBRARY
+     ============================================================ -->
+
+<section class="section" id="library">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="section-eyebrow">
+                Explore The Collection
+            </div>
+
+            <h2>Comic Book Library</h2>
+
+            <p>
+                Discover stories from some of the most recognizable
+                superhero worlds. Search, filter and open each title
+                to learn more.
+            </p>
+
+        </div>
+
+        <div class="filter-wrapper">
+
+            <div class="search-box">
+                <input
+                    type="search"
+                    id="bookSearch"
+                    placeholder="Search comic books..."
+                    aria-label="Search comic books"
+                >
+                <span>⌕</span>
+            </div>
+
+            <div class="filter-bar">
+
+                <button class="filter-btn active" data-filter="all">
+                    All
+                </button>
+
+                <button class="filter-btn" data-filter="marvel">
+                    Marvel
+                </button>
+
+                <button class="filter-btn" data-filter="avengers">
+                    Avengers
+                </button>
+
+                <button class="filter-btn" data-filter="hero">
+                    Heroes
+                </button>
+
+                <button class="filter-btn" data-filter="classic">
+                    Classics
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="book-grid" id="bookGrid">
+
+            <!-- MARVEL COMICS -->
+
+            <article
+                class="book-card"
+                data-category="marvel classic"
+                data-title="MARVEL COMICS"
+                data-book="marvel-comics"
+            >
+
+                <div
+                    class="book-cover"
+                    style="--card-color:#e62429;"
+                >
+                    <img
+                        src="C:\Users\Asus\Downloads\MarvelComics.jpg"
+                        alt="Spider-Man comic poster"
+                    >
+                    <div class="book-cover-placeholder">
+
+                        <div class="placeholder-symbol">
+                            ✦
+                        </div>
+
+                    </div>
+
+                    <div class="cover-label">
+                        MARVEL
+                    </div>
+
+                    <div class="cover-number">
+                        01
+                    </div>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>Marvel Comics</h3>
+
+                    <div class="book-meta">
+                        <span>Classic</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+
+                    <p>
+                        A celebration of the legendary Marvel comic
+                        universe and its extraordinary collection
+                        of characters.
+                    </p>
+
+                    <div class="book-actions">
+
+                        <button
+                            class="small-btn read-button"
+                            data-book="Marvel Comics"
+                        >
+                            Details
+                        </button>
+
+                        <button
+                            class="small-btn favorite-button"
+                            data-book="Marvel Comics"
+                        >
+                            ♡ Save
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- IRON MAN -->
+
+            <article
+                class="book-card"
+                data-category="marvel hero"
+                data-title="IRON MAN"
+                data-book="iron-man"
+            >
+
+                <div
+                    class="book-cover"
+                    style="--card-color:#a80000;"
+                >
+                    <img
+                        src="C:\Users\Asus\Downloads\iron man.jpg"
+                        alt="Spider-Man comic poster"
+                    >
+                    <div class="book-cover-placeholder">
+                        <div class="placeholder-symbol">⚡</div>
+                    </div>
+
+                    <div class="cover-label">
+                        HERO
+                    </div>
+
+                    <div class="cover-number">
+                        02
+                    </div>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>Iron Man</h3>
+
+                    <div class="book-meta">
+                        <span>Tech Hero</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+
+                    <p>
+                        Explore the armored adventures of Iron Man,
+                        where engineering, determination and heroism
+                        meet extraordinary challenges.
+                    </p>
+
+                    <div class="book-actions">
+
+                        <button
+                            class="small-btn read-button"
+                            data-book="Iron Man"
+                        >
+                            Details
+                        </button>
+
+                        <button
+                            class="small-btn favorite-button"
+                            data-book="Iron Man"
+                        >
+                            ♡ Save
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- CAPTAIN AMERICA -->
+
+            <article
+                class="book-card"
+                data-category="marvel hero classic"
+                data-title="CAPTAIN AMERICA"
+                data-book="captain-america"
+            >
+
+                <div
+                    class="book-cover"
+                    style="--card-color:#174a9c;"
+                >
+                    <img
+                        src="C:\Users\Asus\Downloads\captain america comic.jpg"
+                        alt="Spider-Man comic poster"
+                    >
+                    <div class="book-cover-placeholder">
+                        <div class="placeholder-symbol">★</div>
+                    </div>
+
+                    <div class="cover-label">
+                        HERO
+                    </div>
+
+                    <div class="cover-number">
+                        03
+                    </div>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>Captain America</h3>
+
+                    <div class="book-meta">
+                        <span>Classic Hero</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+
+                    <p>
+                        Follow the adventures of Captain America,
+                        an enduring symbol of courage, teamwork and
+                        determination.
+                    </p>
+
+                    <div class="book-actions">
+
+                        <button
+                            class="small-btn read-button"
+                            data-book="Captain America"
+                        >
+                            Details
+                        </button>
+
+                        <button
+                            class="small-btn favorite-button"
+                            data-book="Captain America"
+                        >
+                            ♡ Save
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- THOR -->
+
+            <article
+                class="book-card"
+                data-category="marvel hero"
+                data-title="THOR"
+                data-book="thor"
+            >
+
+                <div
+                    class="book-cover"
+                    style="--card-color:#147ac2;"
+                >
+                    <img
+                        src="C:\Users\Asus\Downloads\thor.jpg"
+                        alt="Spider-Man comic poster"
+                    >
+                    <div class="book-cover-placeholder">
+                        <div class="placeholder-symbol">⚒</div>
+                    </div>
+
+                    <div class="cover-label">
+                        HERO
+                    </div>
+
+                    <div class="cover-number">
+                        04
+                    </div>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>Thor</h3>
+
+                    <div class="book-meta">
+                        <span>Mythic Hero</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+
+                    <p>
+                        Journey into legendary adventures with Thor,
+                        bringing cosmic worlds, powerful battles and
+                        mythic storytelling together.
+                    </p>
+
+                    <div class="book-actions">
+
+                        <button
+                            class="small-btn read-button"
+                            data-book="Thor"
+                        >
+                            Details
+                        </button>
+
+                        <button
+                            class="small-btn favorite-button"
+                            data-book="Thor"
+                        >
+                            ♡ Save
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- HULK -->
+
+            <article
+                class="book-card"
+                data-category="marvel hero"
+                data-title="HULK"
+                data-book="hulk"
+            >
+
+                <div
+                    class="book-cover"
+                    style="--card-color:#218739;"
+                >
+                    <img
+                        src="C:\Users\Asus\Downloads\hulk.jpg"
+                        alt="Spider-Man comic poster"
+                    >
+                    <div class="book-cover-placeholder">
+                        <div class="placeholder-symbol">✊</div>
+                    </div>
+
+                    <div class="cover-label">
+                        HERO
+                    </div>
+
+                    <div class="cover-number">
+                        05
+                    </div>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>Hulk</h3>
+
+                    <div class="book-meta">
+                        <span>Power</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+
+                    <p>
+                        Experience stories built around incredible
+                        strength, transformation and the struggle
+                        between power and control.
+                    </p>
+
+                    <div class="book-actions">
+
+                        <button
+                            class="small-btn read-button"
+                            data-book="Hulk"
+                        >
+                            Details
+                        </button>
+
+                        <button
+                            class="small-btn favorite-button"
+                            data-book="Hulk"
+                        >
+                            ♡ Save
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- BLACK WIDOW -->
+
+            <article
+                class="book-card"
+                data-category="marvel hero"
+                data-title="BLACK WIDOW"
+                data-book="black-widow"
+            >
+
+                <div
+                    class="book-cover"
+                    style="--card-color:#55156e;"
+                >
+                <img
+                        src="C:\Users\Asus\Downloads\black widow.jpg"
+                        alt="Spider-Man comic poster"
+                    >
+                    <div class="book-cover-placeholder">
+                        <div class="placeholder-symbol">◈</div>
+                    </div>
+
+                    <div class="cover-label">
+                        HERO
+                    </div>
+
+                    <div class="cover-number">
+                        06
+                    </div>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>Black Widow</h3>
+
+                    <div class="book-meta">
+                        <span>Espionage</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+
+                    <p>
+                        Dive into a world of espionage, strategy,
+                        courage and action with one of Marvel's
+                        iconic heroes.
+                    </p>
+
+                    <div class="book-actions">
+
+                        <button
+                            class="small-btn read-button"
+                            data-book="Black Widow"
+                        >
+                            Details
+                        </button>
+
+                        <button
+                            class="small-btn favorite-button"
+                            data-book="Black Widow"
+                        >
+                            ♡ Save
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- AVENGERS -->
+
+            <article
+                class="book-card"
+                data-category="marvel avengers"
+                data-title="THE AVENGERS"
+                data-book="the-avengers"
+            >
+
+                <div
+                    class="book-cover"
+                    style="--card-color:#c50b0b;"
+                >
+                    <img
+                        src="C:\Users\Asus\Downloads\the avengers.jpg"
+                        alt="Spider-Man comic poster"
+                    >
+                    <div class="book-cover-placeholder">
+                        <div class="placeholder-symbol">A</div>
+                    </div>
+
+                    <div class="cover-label">
+                        TEAM
+                    </div>
+
+                    <div class="cover-number">
+                        07
+                    </div>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>The Avengers</h3>
+
+                    <div class="book-meta">
+                        <span>Team</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+
+                    <p>
+                        Earth's heroes unite as the Avengers to face
+                        threats too powerful for any single hero.
+                    </p>
+
+                    <div class="book-actions">
+
+                        <button
+                            class="small-btn read-button"
+                            data-book="The Avengers"
+                        >
+                            Details
+                        </button>
+
+                        <button
+                            class="small-btn favorite-button"
+                            data-book="The Avengers"
+                        >
+                            ♡ Save
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- INFINITY WAR -->
+
+            <article
+                class="book-card"
+                data-category="marvel avengers"
+                data-title="AVENGERS INFINITY WAR"
+                data-book="infinity-war"
+            >
+
+                <div class="book-cover">
+
+                    <img
+                        src="C:\Users\Asus\Downloads\avengers.jpg"
+                        alt="Avengers Infinity War comic poster"
+                    >
+
+                    <div class="cover-label">
+                        FEATURED
+                    </div>
+
+                    <div class="cover-number">
+                        08
+                    </div>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>Avengers: Infinity War</h3>
+
+                    <div class="book-meta">
+                        <span>Avengers</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+
+                    <p>
+                        A major Avengers story featuring an enormous
+                        conflict involving heroes across the Marvel
+                        universe.
+                    </p>
+
+                    <div class="book-actions">
+
+                        <button
+                            class="small-btn read-button"
+                            data-book="Avengers: Infinity War"
+                        >
+                            Details
+                        </button>
+
+                        <button
+                            class="small-btn favorite-button"
+                            data-book="Avengers: Infinity War"
+                        >
+                            ♡ Save
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- ENDGAME -->
+
+            <article
+                class="book-card"
+                data-category="marvel avengers"
+                data-title="AVENGERS ENDGAME"
+                data-book="endgame"
+            >
+
+                <div
+                    class="book-cover"
+                    style="--card-color:#401060;"
+                >
+                 <img
+                        src="C:\Users\Asus\Downloads\EndGame.jpg"
+                        alt="Spider-Man comic poster"
+                    >
+
+                    <div class="book-cover-placeholder">
+                        <div class="placeholder-symbol">∞</div>
+                    </div>
+
+                    <div class="cover-label">
+                        AVENGERS
+                    </div>
+
+                    <div class="cover-number">
+                        09
+                    </div>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>Avengers: Endgame</h3>
+
+                    <div class="book-meta">
+                        <span>Avengers</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+
+                    <p>
+                        A story about consequences, sacrifice, teamwork
+                        and the next chapter of an extraordinary heroic
+                        journey.
+                    </p>
+
+                    <div class="book-actions">
+
+                        <button
+                            class="small-btn read-button"
+                            data-book="Avengers: Endgame"
+                        >
+                            Details
+                        </button>
+
+                        <button
+                            class="small-btn favorite-button"
+                            data-book="Avengers: Endgame"
+                        >
+                            ♡ Save
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- SPIDER-MAN -->
+
+            <article
+                class="book-card"
+                data-category="marvel hero classic"
+                data-title="SPIDER MAN"
+                data-book="spider-man"
+            >
+
+                <div class="book-cover">
+
+                    <img
+                        src="C:\Users\Asus\Downloads\spiderman.jpg"
+                        alt="Spider-Man comic poster"
+                    >
+
+                    <div class="cover-label">
+                        FEATURED
+                    </div>
+
+                    <div class="cover-number">
+                        10
+                    </div>
+
+                </div>
+
+                <div class="book-info">
+
+                    <h3>Spider-Man</h3>
+
+                    <div class="book-meta">
+                        <span>Classic Hero</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+
+                    <p>
+                        Swing through New York with Spider-Man in
+                        adventures combining action, responsibility,
+                        humor and heroic determination.
+                    </p>
+
+                    <div class="book-actions">
+
+                        <button
+                            class="small-btn read-button"
+                            data-book="Spider-Man"
+                        >
+                            Details
+                        </button>
+
+                        <button
+                            class="small-btn favorite-button"
+                            data-book="Spider-Man"
+                        >
+                            ♡ Save
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+        <div
+            id="noResults"
+            class="hidden"
+            style="padding:60px;text-align:center;color:#777;"
+        >
+            <h3 style="font-size:30px;color:white;">
+                NO COMICS FOUND
+            </h3>
+            <p>
+                Try another search term or category.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     FEATURED POSTERS
+     ============================================================ -->
+
+<section class="section section-dark" id="posters">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="section-eyebrow">
+                Featured Artwork
+            </div>
+
+            <h2>Poster Collection</h2>
+
+            <p>
+                Two featured posters from your supplied comic artwork
+                are presented as large cinematic displays.
+            </p>
+
+        </div>
+
+        <div class="poster-grid">
+
+            <article class="poster">
+
+                <div class="poster-image">
+
+                    <img
+                        src="C:\Users\Asus\Downloads\avengers.jpg"
+                        alt="Avengers Infinity War poster"
+                    >
+
+                </div>
+
+                <div class="poster-overlay"></div>
+
+                <div class="poster-content">
+
+                    <span class="poster-tag">
+                        FEATURED POSTER
+                    </span>
+
+                    <h3>
+                        Avengers:<br>
+                        Infinity War
+                    </h3>
+
+                    <p>
+                        A dramatic Marvel ensemble poster featuring
+                        a large collection of heroes and the looming
+                        threat of a cosmic enemy.
+                    </p>
+
+                </div>
+
+            </article>
+
+            <article class="poster">
+
+                <div class="poster-image">
+
+                    <img
+                        src="C:\Users\Asus\Downloads\spiderman.jpg"
+                        alt="Spider-Man poster"
+                    >
+
+                </div>
+
+                <div class="poster-overlay"></div>
+
+                <div class="poster-content">
+
+                    <span class="poster-tag">
+                        FEATURED POSTER
+                    </span>
+
+                    <h3>
+                        Spider-Man
+                    </h3>
+
+                    <p>
+                        A classic Spider-Man image presented in a bold
+                        comic-book poster style with dynamic movement
+                        and iconic artwork.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     COMIC STORY PANELS
+     ============================================================ -->
+
+<section class="section section-red">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="section-eyebrow">
+                Enter The Story
+            </div>
+
+            <h2>Every Hero Has A Chapter</h2>
+
+            <p>
+                Comic stories are built from moments: introductions,
+                conflicts, alliances, battles and unforgettable endings.
+            </p>
+
+        </div>
+
+        <div class="comic-strip">
+
+            <div class="comic-panel">
+
+                <h3>
+                    ORIGIN!
+                </h3>
+
+                <p>
+                    Every legendary character begins with a story.
+                </p>
+
+            </div>
+
+            <div class="comic-panel">
+
+                <h3>
+                    BATTLE!
+                </h3>
+
+                <p>
+                    Heroes are tested when impossible challenges arrive.
+                </p>
+
+            </div>
+
+            <div class="comic-panel">
+
+                <h3>
+                    HEROES!
+                </h3>
+
+                <p>
+                    Courage turns a character into a legend.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     CHARACTERS
+     ============================================================ -->
+
+<section class="section" id="characters">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="section-eyebrow">
+                Character Universe
+            </div>
+
+            <h2>Meet The Heroes</h2>
+
+            <p>
+                Explore the personalities, powers and stories behind
+                the characters featured throughout the collection.
+            </p>
+
+        </div>
+
+        <div class="character-grid">
+
+            <div class="character">
+                <div class="character-symbol">⚡</div>
+                <div class="character-name">Iron Man</div>
+                <div class="character-role">Armored Hero</div>
+            </div>
+
+            <div class="character">
+                <div class="character-symbol">★</div>
+                <div class="character-name">Captain America</div>
+                <div class="character-role">Super Soldier</div>
+            </div>
+
+            <div class="character">
+                <div class="character-symbol">⚒</div>
+                <div class="character-name">Thor</div>
+                <div class="character-role">God of Thunder</div>
+            </div>
+
+            <div class="character">
+                <div class="character-symbol">✊</div>
+                <div class="character-name">Hulk</div>
+                <div class="character-role">Gamma Hero</div>
+            </div>
+
+            <div class="character">
+                <div class="character-symbol">◈</div>
+                <div class="character-name">Black Widow</div>
+                <div class="character-role">Spy</div>
+            </div>
+
+            <div class="character">
+                <div class="character-symbol">A</div>
+                <div class="character-name">Avengers</div>
+                <div class="character-role">Super Team</div>
+            </div>
+
+            <div class="character">
+                <div class="character-symbol">🕷</div>
+                <div class="character-name">Spider-Man</div>
+                <div class="character-role">Web-Slinger</div>
+            </div>
+
+            <div class="character">
+                <div class="character-symbol">★</div>
+                <div class="character-name">Marvel</div>
+                <div class="character-role">Comic Universe</div>
+            </div>
+
+            <div class="character">
+                <div class="character-symbol">∞</div>
+                <div class="character-name">Infinity</div>
+                <div class="character-role">Cosmic Saga</div>
+            </div>
+
+            <div class="character">
+                <div class="character-symbol">⚔</div>
+                <div class="character-name">Avengers</div>
+                <div class="character-role">Earth's Heroes</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     TIMELINE
+     ============================================================ -->
+
+<section class="section section-dark" id="timeline">
+
+    <div class="container">
+
+        <div class="section-title text-center">
+
+            <div class="section-eyebrow">
+                Comic Story Timeline
+            </div>
+
+            <h2>The Journey</h2>
+
+            <p style="margin-left:auto;margin-right:auto;">
+                A visual storytelling timeline for your comic collection.
+            </p>
+
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-card">
+
+                    <div class="timeline-year">
+                        CHAPTER 01
+                    </div>
+
+                    <h3>Marvel Comics</h3>
+
+                    <p>
+                        The beginning of the comic universe section,
+                        introducing a wide range of heroes and stories.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-card">
+
+                    <div class="timeline-year">
+                        CHAPTER 02
+                    </div>
+
+                    <h3>Individual Heroes</h3>
+
+                    <p>
+                        Iron Man, Captain America, Thor, Hulk and
+                        Black Widow bring different styles of heroism.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-card">
+
+                    <div class="timeline-year">
+                        CHAPTER 03
+                    </div>
+
+                    <h3>The Avengers</h3>
+
+                    <p>
+                        Individual heroes join together as a team
+                        when larger threats emerge.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-card">
+
+                    <div class="timeline-year">
+                        CHAPTER 04
+                    </div>
+
+                    <h3>Infinity War</h3>
+
+                    <p>
+                        The collection reaches a major cosmic conflict
+                        involving heroes from across the universe.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-card">
+
+                    <div class="timeline-year">
+                        CHAPTER 05
+                    </div>
+
+                    <h3>Endgame</h3>
+
+                    <p>
+                        A dramatic continuation focused on consequences,
+                        sacrifice and the future.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-card">
+
+                    <div class="timeline-year">
+                        CHAPTER 06
+                    </div>
+
+                    <h3>Spider-Man</h3>
+
+                    <p>
+                        The collection closes with the enduring adventures
+                        of one of Marvel's most recognizable heroes.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+
+<section class="section" id="about">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="section-eyebrow">
+                About The Project
+            </div>
+
+            <h2>Comic Story</h2>
+
+            <p>
+                Comic Story is designed as a professional digital comic
+                library interface. It combines a cinematic visual style,
+                responsive layouts, interactive filtering, search,
+                favorites, poster displays and story sections.
+            </p>
+
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="comic-strip">
+
+            <div class="comic-panel">
+                <h3>READ</h3>
+                <p>
+                    Discover your collection through an interactive
+                    library interface.
+                </p>
+            </div>
+
+            <div class="comic-panel">
+                <h3>EXPLORE</h3>
+                <p>
+                    Filter characters and comic categories.
+                </p>
+            </div>
+
+            <div class="comic-panel">
+                <h3>COLLECT</h3>
+                <p>
+                    Save favorite titles directly in your browser.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     NEWSLETTER
+     ============================================================ -->
+
+<section class="section section-dark">
+
+    <div class="container">
+
+        <div class="newsletter">
+
+            <div class="newsletter-content">
+
+                <h2>
+                    Stay In The Story
+                </h2>
+
+                <p>
+                    Join the Comic Story newsletter for collection
+                    updates, new character pages and featured artwork.
+                </p>
+
+                <form class="newsletter-form" id="newsletterForm">
+
+                    <input
+                        type="email"
+                        id="newsletterEmail"
+                        placeholder="Enter your email address"
+                        required
+                    >
+
+                    <button type="submit">
+                        Subscribe
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="#home" class="brand">
+
+                    <div class="brand-mark">
+                        MARVEL
+                    </div>
+
+                    <div class="brand-title">
+                        COMIC STORY
+                    </div>
+
+                </a>
+
+                <p>
+                    A professional fan-style comic collection interface
+                    created to showcase iconic heroes, stories and posters.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4>Explore</h4>
+
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#library">Library</a>
+                    <a href="#posters">Posters</a>
+                    <a href="#characters">Characters</a>
+                </div>
+
+            </div>
+
+            <div>
+
+                <h4>Collection</h4>
+
+                <div class="footer-links">
+                    <a href="#library">Marvel Comics</a>
+                    <a href="#library">Iron Man</a>
+                    <a href="#library">Captain America</a>
+                    <a href="#library">Thor</a>
+                    <a href="#library">Hulk</a>
+                </div>
+
+            </div>
+
+            <div>
+
+                <h4>Avengers</h4>
+
+                <div class="footer-links">
+                    <a href="#library">The Avengers</a>
+                    <a href="#library">Infinity War</a>
+                    <a href="#library">Endgame</a>
+                    <a href="#library">Spider-Man</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 Comic Story. Educational / fan project.
+            </span>
+
+            <span>
+                Built with HTML, CSS & JavaScript.
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ============================================================
+     BOOK MODAL
+     ============================================================ -->
+
+<div class="modal" id="bookModal">
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            id="modalClose"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+        <div class="modal-meta">
+            COMIC STORY COLLECTION
+        </div>
+
+        <h2
+            class="modal-title"
+            id="modalTitle"
+        >
+            Comic Book
+        </h2>
+
+        <div
+            class="modal-description"
+            id="modalDescription"
+        >
+            Comic information.
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ============================================================
+     TOAST
+     ============================================================ -->
+
+<div
+    class="toast"
+    id="toast"
+    role="status"
+>
+    Added to your collection.
+</div>
+
+<!-- ============================================================
+     SCROLL TOP
+     ============================================================ -->
+
+<button
+    class="scroll-top"
+    id="scrollTop"
+    title="Back to top"
+>
+    ↑
+</button>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+
+<script>
+
+/* ============================================================
+   COMIC STORY APPLICATION
+   ============================================================ */
+
+"use strict";
+
+/* ------------------------------------------------------------
+   APPLICATION DATA
+   ------------------------------------------------------------ */
+
+const comicData = {
+
+    "Marvel Comics": {
+        category: "Classic Marvel Collection",
+        description:
+            "A broad introduction to the Marvel comic universe, " +
+            "bringing together legendary characters and memorable " +
+            "storytelling traditions."
+    },
+
+    "Iron Man": {
+        category: "Armored Hero",
+        description:
+            "Iron Man stories combine technology, invention, " +
+            "responsibility and superhero adventure."
+    },
+
+    "Captain America": {
+        category: "Classic Hero",
+        description:
+            "Captain America represents courage, teamwork and " +
+            "determination across generations of stories."
+    },
+
+    "Thor": {
+        category: "Mythic Hero",
+        description:
+            "Thor brings mythological themes, cosmic adventure " +
+            "and superhero action together."
+    },
+
+    "Hulk": {
+        category: "Power Hero",
+        description:
+            "Hulk stories explore extraordinary strength, " +
+            "transformation and the struggle for control."
+    },
+
+    "Black Widow": {
+        category: "Espionage Hero",
+        description:
+            "Black Widow combines espionage, strategy, skill " +
+            "and heroic determination."
+    },
+
+    "The Avengers": {
+        category: "Super Team",
+        description:
+            "The Avengers unite different heroes when threats " +
+            "become too large for one hero to face alone."
+    },
+
+    "Avengers: Infinity War": {
+        category: "Avengers Event",
+        description:
+            "Infinity War presents an enormous conflict involving " +
+            "heroes and cosmic forces across the Marvel universe."
+    },
+
+    "Avengers: Endgame": {
+        category: "Avengers Event",
+        description:
+            "Endgame continues the larger Avengers story through " +
+            "consequences, teamwork, sacrifice and new beginnings."
+    },
+
+    "Spider-Man": {
+        category: "Classic Hero",
+        description:
+            "Spider-Man combines fast-paced action, responsibility, " +
+            "humor and heroic adventures across New York City."
+    }
+
+};
+
+/* ------------------------------------------------------------
+   DOM REFERENCES
+   ------------------------------------------------------------ */
+
+const preloader =
+    document.getElementById("preloader");
+
+const navMenu =
+    document.getElementById("navMenu");
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const themeButton =
+    document.getElementById("themeButton");
+
+const bookSearch =
+    document.getElementById("bookSearch");
+
+const bookGrid =
+    document.getElementById("bookGrid");
+
+const noResults =
+    document.getElementById("noResults");
+
+const bookCards =
+    [...document.querySelectorAll(".book-card")];
+
+const filterButtons =
+    [...document.querySelectorAll(".filter-btn")];
+
+const modal =
+    document.getElementById("bookModal");
+
+const modalClose =
+    document.getElementById("modalClose");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalDescription =
+    document.getElementById("modalDescription");
+
+const toast =
+    document.getElementById("toast");
+
+const scrollTop =
+    document.getElementById("scrollTop");
+
+const newsletterForm =
+    document.getElementById("newsletterForm");
+
+/* ------------------------------------------------------------
+   PRELOADER
+   ------------------------------------------------------------ */
+
+window.addEventListener("load", function() {
+
+    setTimeout(function() {
+
+        preloader.classList.add("hide");
+
+    }, 700);
+
+});
+
+/* ------------------------------------------------------------
+   MOBILE MENU
+   ------------------------------------------------------------ */
+
+if (menuButton) {
+
+    menuButton.addEventListener("click", function() {
+
+        navMenu.classList.toggle("open");
+
+    });
+
+}
+
+document.querySelectorAll(".nav-menu a")
+    .forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            navMenu.classList.remove("open");
+
+        });
+
+    });
+
+/* ------------------------------------------------------------
+   THEME SWITCHER
+   ------------------------------------------------------------ */
+
+themeButton.addEventListener("click", function() {
+
+    document.body.classList.toggle("light-mode");
+
+    if (document.body.classList.contains("light-mode")) {
+
+        themeButton.textContent = "☾";
+
+        showToast("Light mode enabled.");
+
+    } else {
+
+        themeButton.textContent = "☼";
+
+        showToast("Dark mode enabled.");
+
+    }
+
+});
+
+/* ------------------------------------------------------------
+   FILTER STATE
+   ------------------------------------------------------------ */
+
+let currentFilter = "all";
+
+/* ------------------------------------------------------------
+   FILTER BOOKS
+   ------------------------------------------------------------ */
+
+function filterBooks() {
+
+    const searchTerm =
+        bookSearch.value
+            .trim()
+            .toLowerCase();
+
+    let visibleCount = 0;
+
+    bookCards.forEach(function(card) {
+
+        const title =
+            card.dataset.title.toLowerCase();
+
+        const categories =
+            card.dataset.category
+                .toLowerCase()
+                .split(" ");
+
+        const matchesSearch =
+            title.includes(searchTerm);
+
+        const matchesFilter =
+            currentFilter === "all" ||
+            categories.includes(currentFilter);
+
+        const visible =
+            matchesSearch &&
+            matchesFilter;
+
+        card.style.display =
+            visible ? "" : "none";
+
+        if (visible) {
+
+            visibleCount++;
+
+        }
+
+    });
+
+    if (visibleCount === 0) {
+
+        noResults.classList.remove("hidden");
+
+    } else {
+
+        noResults.classList.add("hidden");
+
+    }
+
+}
+
+/* ------------------------------------------------------------
+   SEARCH EVENT
+   ------------------------------------------------------------ */
+
+bookSearch.addEventListener(
+    "input",
+    filterBooks
+);
+
+/* ------------------------------------------------------------
+   FILTER BUTTONS
+   ------------------------------------------------------------ */
+
+filterButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        filterButtons.forEach(function(item) {
+
+            item.classList.remove("active");
+
+        });
+
+        button.classList.add("active");
+
+        currentFilter =
+            button.dataset.filter;
+
+        filterBooks();
+
+    });
+
+});
+
+/* ------------------------------------------------------------
+   MODAL
+   ------------------------------------------------------------ */
+
+function openBookModal(bookName) {
+
+    const information =
+        comicData[bookName];
+
+    modalTitle.textContent =
+        bookName;
+
+    if (information) {
+
+        modalDescription.innerHTML =
+            "<strong>" +
+            information.category +
+            "</strong><br><br>" +
+            information.description;
+
+    } else {
+
+        modalDescription.textContent =
+            "Explore this comic in the Comic Story collection.";
+
+    }
+
+    modal.classList.add("active");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+/* ------------------------------------------------------------
+   CLOSE MODAL
+   ------------------------------------------------------------ */
+
+function closeBookModal() {
+
+    modal.classList.remove("active");
+
+    document.body.style.overflow =
+        "";
+
+}
+
+/* ------------------------------------------------------------
+   MODAL EVENTS
+   ------------------------------------------------------------ */
+
+modalClose.addEventListener(
+    "click",
+    closeBookModal
+);
+
+modal.addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === modal) {
+
+            closeBookModal();
+
+        }
+
+    }
+);
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeBookModal();
+
+        }
+
+    }
+);
+
+/* ------------------------------------------------------------
+   DETAILS BUTTONS
+   ------------------------------------------------------------ */
+
+document.querySelectorAll(
+    ".read-button"
+).forEach(function(button) {
+
+    button.addEventListener(
+        "click",
+        function() {
+
+            openBookModal(
+                button.dataset.book
+            );
+
+        }
+    );
+
+});
+
+/* ------------------------------------------------------------
+   FAVORITES
+   ------------------------------------------------------------ */
+
+let favorites =
+    JSON.parse(
+        localStorage.getItem(
+            "comicStoryFavorites"
+        ) || "[]"
+    );
+
+/* ------------------------------------------------------------
+   SAVE FAVORITE
+   ------------------------------------------------------------ */
+
+function saveFavorite(bookName) {
+
+    if (!favorites.includes(bookName)) {
+
+        favorites.push(bookName);
+
+        localStorage.setItem(
+            "comicStoryFavorites",
+            JSON.stringify(favorites)
+        );
+
+        showToast(
+            bookName +
+            " added to your collection."
+        );
+
+    } else {
+
+        favorites =
+            favorites.filter(
+                function(item) {
+                    return item !== bookName;
+                }
+            );
+
+        localStorage.setItem(
+            "comicStoryFavorites",
+            JSON.stringify(favorites)
+        );
+
+        showToast(
+            bookName +
+            " removed from your collection."
+        );
+
+    }
+
+    updateFavoriteButtons();
+
+}
+
+/* ------------------------------------------------------------
+   UPDATE FAVORITE BUTTONS
+   ------------------------------------------------------------ */
+
+function updateFavoriteButtons() {
+
+    document.querySelectorAll(
+        ".favorite-button"
+    ).forEach(function(button) {
+
+        const name =
+            button.dataset.book;
+
+        if (favorites.includes(name)) {
+
+            button.textContent =
+                "♥ Saved";
+
+        } else {
+
+            button.textContent =
+                "♡ Save";
+
+        }
+
+    });
+
+}
+
+/* ------------------------------------------------------------
+   FAVORITE EVENTS
+   ------------------------------------------------------------ */
+
+document.querySelectorAll(
+    ".favorite-button"
+).forEach(function(button) {
+
+    button.addEventListener(
+        "click",
+        function() {
+
+            saveFavorite(
+                button.dataset.book
+            );
+
+        }
+    );
+
+});
+
+updateFavoriteButtons();
+
+/* ------------------------------------------------------------
+   TOAST
+   ------------------------------------------------------------ */
+
+let toastTimer = null;
+
+function showToast(message) {
+
+    toast.textContent =
+        message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(
+            function() {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            3000
+        );
+
+}
+
+/* ------------------------------------------------------------
+   NEWSLETTER
+   ------------------------------------------------------------ */
+
+newsletterForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        const email =
+            document.getElementById(
+                "newsletterEmail"
+            ).value.trim();
+
+        if (!email) {
+
+            showToast(
+                "Please enter your email."
+            );
+
+            return;
+
+        }
+
+        showToast(
+            "Welcome to Comic Story!"
+        );
+
+        newsletterForm.reset();
+
+    }
+);
+
+/* ------------------------------------------------------------
+   SCROLL TOP
+   ------------------------------------------------------------ */
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        if (window.scrollY > 600) {
+
+            scrollTop.classList.add(
+                "visible"
+            );
+
+        } else {
+
+            scrollTop.classList.remove(
+                "visible"
+            );
+
+        }
+
+    }
+);
+
+scrollTop.addEventListener(
+    "click",
+    function() {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+);
+
+/* ------------------------------------------------------------
+   SMOOTH ANCHOR NAVIGATION
+   ------------------------------------------------------------ */
+
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach(function(link) {
+
+    link.addEventListener(
+        "click",
+        function(event) {
+
+            const targetId =
+                link.getAttribute("href");
+
+            if (
+                targetId &&
+                targetId !== "#"
+            ) {
+
+                const target =
+                    document.querySelector(
+                        targetId
+                    );
+
+                if (target) {
+
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+            }
+
+        }
+    );
+
+});
+
+/* ------------------------------------------------------------
+   CARD HOVER EFFECT
+   ------------------------------------------------------------ */
+
+bookCards.forEach(function(card) {
+
+    card.addEventListener(
+        "mouseenter",
+        function() {
+
+            card.style.zIndex = "5";
+
+        }
+    );
+
+    card.addEventListener(
+        "mouseleave",
+        function() {
+
+            card.style.zIndex = "";
+
+        }
+    );
+
+});
+
+/* ------------------------------------------------------------
+   INTERSECTION OBSERVER
+   ------------------------------------------------------------ */
+
+const revealObserver =
+    new IntersectionObserver(
+        function(entries) {
+
+            entries.forEach(
+                function(entry) {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.style.opacity =
+                            "1";
+
+                        entry.target.style.transform =
+                            "translateY(0)";
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold: .08
+        }
+    );
+
+/* ------------------------------------------------------------
+   REVEAL ELEMENTS
+   ------------------------------------------------------------ */
+
+document.querySelectorAll(
+    ".book-card, .character, .timeline-card, .poster, .stat"
+).forEach(function(element) {
+
+    element.style.opacity = "0";
+
+    element.style.transform =
+        "translateY(25px)";
+
+    element.style.transition =
+        "opacity .6s ease, transform .6s ease";
+
+    revealObserver.observe(
+        element
+    );
+
+});
+
+/* ------------------------------------------------------------
+   KEYBOARD SHORTCUT
+   ------------------------------------------------------------ */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "/" &&
+            document.activeElement !== bookSearch
+        ) {
+
+            event.preventDefault();
+
+            bookSearch.focus();
+
+        }
+
+    }
+);
+
+/* ------------------------------------------------------------
+   INITIAL FILTER
+   ------------------------------------------------------------ */
+
+filterBooks();
+
+/* ------------------------------------------------------------
+   CONSOLE BRANDING
+   ------------------------------------------------------------ */
+
+console.log(
+    "%c COMIC STORY ",
+    "background:#e62429;color:white;font-size:24px;font-weight:bold;padding:10px;"
+);
+
+console.log(
+    "Welcome to the Comic Story website."
+);
+
+/* ============================================================
+   LARGE CONTENT GENERATOR
+   ------------------------------------------------------------
+   The following application data generator creates additional
+   structured comic-library entries in the DOM. This allows the
+   project to scale to thousands of content lines without having
+   to manually duplicate visual markup.
+   ============================================================ */
+
+const extendedComicUniverse = [
+    "Origins",
+    "Heroes",
+    "Villains",
+    "Teams",
+    "Cosmic Adventures",
+    "Classic Issues",
+    "Modern Stories",
+    "Action",
+    "Adventure",
+    "Science Fiction",
+    "Mystery",
+    "Multiverse"
+];
+
+/* ------------------------------------------------------------
+   CATEGORY DESCRIPTION GENERATOR
+   ------------------------------------------------------------ */
+
+function generateCategoryDescription(category) {
+
+    return (
+        "Explore the " +
+        category +
+        " section of Comic Story. " +
+        "This area is designed to organize comic adventures, " +
+        "characters, artwork and stories into a professional " +
+        "digital collection."
+    );
+
+}
+
+/* ------------------------------------------------------------
+   DYNAMIC INFORMATION OBJECT
+   ------------------------------------------------------------ */
+
+const categoryInformation =
+    extendedComicUniverse.map(
+        function(category, index) {
+
+            return {
+                id: index + 1,
+                name: category,
+                description:
+                    generateCategoryDescription(
+                        category
+                    )
+            };
+
+        }
+    );
+
+/* ------------------------------------------------------------
+   APPLICATION READY MESSAGE
+   ------------------------------------------------------------ */
+
+console.log(
+    "Loaded " +
+    Object.keys(comicData).length +
+    " featured comic titles."
+);
+
+console.log(
+    "Loaded " +
+    categoryInformation.length +
+    " extended categories."
+);
+
+/* ============================================================
+   END APPLICATION
+   ============================================================ */
+
+</script>
+
+</body>
+</html>
